@@ -1,0 +1,17 @@
+package Project_Frame;
+
+import javax.swing.JFrame;
+
+public class CalendarView extends JFrame {
+	public CalendarView() {
+		setTitle("ดÞทย");
+		setSize(800, 600);
+		setLocationRelativeTo(null);
+		
+		ToolBar tb = new ToolBar();
+		
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+}

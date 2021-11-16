@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;DBInterface.java&apos; to &apos;Seoul_01_Project/src/Project_DBInterface&apos;&#x0D;&#x0A;- Original project: &apos;Seoul_01_Setting&apos;&#x0D;&#x0A;- Destination element: &apos;Seoul_01_Project/src/Project_DBInterface&apos;&#x0D;&#x0A;- Original element: &apos;Main.DBInterface.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=Seoul_01_Project/src&lt;Project_DBInterface" element1="/src&lt;Main{DBInterface.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1462254750767" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,23 @@
+package Setting_TableSetting;
+
+import java.sql.ResultSet;
+
+import Setting_DBInterface.DBInterface;
+
+public class TableSetting {
+	public static void CreateDB() throws Exception {
+		ResultSet rs = DBInterface.Stmt.executeQuery("show databases like 'project000'");
+		if(rs.next()) {
+			DBInterface.Stmt.execute("drop database `project000`");
+		}
+		DBInterface.Stmt.execute("create database `project000`");
+	}
+	
+	public static void CreateGrants() throws Exception {
+		DBInterface.Stmt.execute("use Mysql");
+		ResultSet rs = DBInterface.Stmt.executeQuery("select * from user where user='user'");
+		if(rs.next()) {
+			DBInterface.Stmt.execute("");
+		}
+	}
+}

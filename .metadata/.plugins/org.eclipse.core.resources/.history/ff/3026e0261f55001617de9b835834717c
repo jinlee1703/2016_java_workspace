@@ -1,0 +1,66 @@
+package Setting_TableSetting;
+
+import java.sql.ResultSet;
+
+import Setting_DBInterface.DBInterface;
+
+public class TableSetting {
+	public static void CreateDB() throws Exception {
+		ResultSet rs = DBInterface.Stmt.executeQuery("show databases like 'Cinema'");
+		if(rs.next()) {
+			DBInterface.Stmt.execute("drop database `Cinema`");
+		}
+		DBInterface.Stmt.execute("create database `Cinema`");
+		DBInterface.Stmt.execute("use `Cinema`");
+		
+		System.out.println("Create DB");
+	}
+	
+	public static void CreateGrants() throws Exception {
+		DBInterface.Stmt.execute("use Mysql");
+		ResultSet rs = DBInterface.Stmt.executeQuery("select * from user where user='user'");
+		if(rs.next()) {
+			DBInterface.Stmt.execute("drop user `user`");
+		}
+		DBInterface.Stmt.execute("create user `user` identified by '1234'");
+		DBInterface.Stmt.execute("grant select,insert,delete,update on `Cinema`.* to user");
+		
+		System.out.println("Create Grants");
+	}
+	
+	public static void CreateTables() throws Exception {
+		//customer
+		DBInterface.Stmt.execute("CREATE TABLE `cinema`.`customer` (  "
+				+ "`c_num` INT NOT NULL,  "
+				+ "`id` VARCHAR(20) NULL,  "
+				+ "`pw` VARCHAR(20) NULL,  "
+				+ "`c_name` VARCHAR(20) NULL,  "
+				+ "`tel` INT NULL,  "
+				+ "PRIMARY KEY (`c_num`));");
+		
+		//snack
+		DBInterface.Stmt.execute("CREATE TABLE `cinema`.`snack` (  "
+				+ "`s_num` INT NOT NULL,  "
+				+ "`s_type` VARCHAR(20) NULL,  "
+				+ "`s_name` VARCHAR(20) NULL,  "
+				+ "`s_price` INT NULL,  "
+				+ "PRIMARY KEY (`s_num`));");
+		
+		//seat
+		DBInterface.Stmt.execute("CREATE TABLE `cinema`.`seat` (  "
+				+ "`t_num` INT NOT NULL,  "
+				+ "`seat_num` VARCHAR(20) NOT NULL,  "
+				+ "`isssue` INT NULL,  "
+				+ "PRIMARY KEY (`t_num`));");
+		
+		//movie
+		DBInterface.Stmt.execute("CREATE TABLE `cinema`.`movie` (  "
+				+ "`movie_num` INT NOT NULL,  "
+				+ "`title` VARCHAR(20) NOT NULL,  "
+				+ "PRIMARY KEY (`movie_num`));");
+		
+		 System.out.println("Create Table");
+	}
+	
+	
+}

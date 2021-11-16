@@ -1,0 +1,69 @@
+package Project_Frame;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+
+public class ledgerInsert extends JFrame {
+	JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
+	JLabel[] l = new JLabel[5];
+	String[] ln = {"날짜","구분","항목","결제/수단","금액"};
+	JFormattedTextField t1 = new JFormattedTextField("yyyy-MM-dd");
+	JFormattedTextField t2 = new JFormattedTextField(new Integer(0));
+	String[] cn = {"용단","교통비","식대","생활비","통신비","의료비"};
+	JComboBox combo = new JComboBox(cn);
+	JRadioButton rb1 = new JRadioButton("수입");
+	JRadioButton rb2 = new JRadioButton("지출");
+	JRadioButton rb3 = new JRadioButton("현금");
+	JRadioButton rb4 = new JRadioButton("카드");
+	JButton btn1 = new JButton("가계부 입력");
+	JButton btn2 = new JButton("초기화");
+	JTextArea t3 = new JTextArea();
+	
+	
+	public ledgerInsert() {
+		setTitle("가계부 작성");
+		setSize(350, 450);
+		setLocationRelativeTo(null);
+		
+		JPanel p1 = new JPanel(new BorderLayout());
+		p1.setBorder(new EmptyBorder(0, 15, 0, 50));
+		JPanel p11= new JPanel(new GridLayout(5, 1, 20, 20));
+		for(int i=0; i<5; i++) {
+			l[i] = new JLabel("●"+ln[i]+" :");
+			p11.add(l[i]);
+		}
+		p1.add(p11, BorderLayout.WEST);
+		JPanel p12 = new JPanel(new GridLayout(5, 1, 20, 20));
+		JPanel rp1 = new JPanel();
+		rp1.add(rb1); rp1.add(rb2);
+		JPanel rp2 = new JPanel();
+		rp1.add(rb3); rp1.add(rb4);
+		p12.add(t1); p12.add(rp1); p12.add(combo); p12.add(rp2); p12.add(t2);
+		p1.add(p12, BorderLayout.CENTER);
+		JPanel p13 = new JPanel(new FlowLayout());
+		p13.add(btn1); p13.add(btn2);
+		p1.add(p13, BorderLayout.SOUTH);
+		tab.add("가계부 입력", p1);
+		
+		JPanel p2 = new JPanel(new BorderLayout());
+		p2.setBorder(new EmptyBorder(0, 10, 10, 10));
+		p2.add(new JLabel("● 메모"), BorderLayout.NORTH);
+		p2.add(t3, BorderLayout.CENTER);
+		tab.add("메모 입력", p2);
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+}

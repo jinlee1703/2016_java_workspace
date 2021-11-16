@@ -1,0 +1,25 @@
+package Project_Frame;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class purchaseSelect extends JFrame {
+	String[] header = {"주문자","상품명","수령자","사이즈","주문일자","총액"};
+	DefaultTableModel model = new DefaultTableModel(header, 0);
+	JTable table = new JTable(model);
+	JScrollPane scroll = new JScrollPane(table);
+	
+	public purchaseSelect() {
+		setTitle("거래내역");
+		setSize(700, 500);
+		setLocationRelativeTo(null);
+		
+		JPanel p = new JPanel();
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+}

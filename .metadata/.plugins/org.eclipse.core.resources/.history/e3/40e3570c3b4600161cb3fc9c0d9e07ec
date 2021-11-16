@@ -1,0 +1,132 @@
+package Project_Frame;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Map;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import org.omg.PortableServer.ServantLocatorPackage.CookieHolder;
+
+import Project_DBInterface.DBInterface;
+
+public class Login extends JFrame implements ActionListener {
+	JLabel label1 = new JLabel("아이디");
+	JLabel label2 = new JLabel("비밀번호");
+	static JTextField idText = new JTextField();
+	JTextField pwText = new JPasswordField();
+	JButton btn = new JButton("LOGIN");
+	JCheckBox check = new JCheckBox("ID 저장");
+	JLabel sign = new JLabel("SIGN UP");
+	CookieHolder ck;
+	
+	public Login() {
+		setSize(300, 160);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		
+		JPanel p = new JPanel(new BorderLayout());
+		
+		JPanel p1 = new JPanel(new GridLayout(2, 1, 10, 10));
+		p1.setBorder(new EmptyBorder(5, 5, 0, 5));
+		p1.add(label1);
+		p1.add(label2);
+		
+		JPanel p2 = new JPanel(new GridLayout(2, 1, 2, 5));
+		p2.setBorder(new EmptyBorder(5, 0, 0, 5));
+		p2.add(idText);
+		p2.add(pwText);
+		
+		JPanel p3 = new JPanel(new BorderLayout());
+		p3.setBorder(new EmptyBorder(5, 0, 0, 5));
+		p3.add(btn);
+		
+		JPanel p4 = new JPanel(new FlowLayout());
+		p4.setBorder(new EmptyBorder(10, 0, 0, 0));
+		Font font = sign.getFont();
+		Map at = font.getAttributes();
+		at.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+		sign.setFont(font.deriveFont(at));
+		p4.add(check); p4.add(sign);
+		
+		JPanel p5 = new JPanel(new BorderLayout());
+		p5.add(p1, BorderLayout.WEST);
+		p5.add(p2, BorderLayout.CENTER);
+		p5.add(p3, BorderLayout.EAST);
+		
+		p.add(p5, BorderLayout.CENTER);
+		p.add(p4, BorderLayout.SOUTH);
+		
+		add(p);
+		
+		btn.addActionListener(this);
+		
+		idSave();
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		try {
+			if(idText.getText().equals("admin") && pwText.getText().equals("admin")) {
+				new ManagerMain();
+			} else {
+				ResultSet rs = DBInterface.Stmt.executeQuery("select * from member where id='"+idText.getText()+"' and pw='"+pwText.getText()+"'");
+				if(rs.next()) {
+					new MemberMain();
+				}
+			}
+			
+			try {
+				DBInterface.Stmt.execute("delete from id");
+				DBInterface.Stmt.execute("drop table id");
+			} catch (Exception e1) {
+				// TODO: handle exception
+			}
+			
+			if(check.isSelected()==true) {
+				DBInterface.Stmt.execute("CREATE TABLE `project000`.`id` (  `id` VARCHAR(45) NOT NULL,  PRIMARY KEY (`id`));");
+				DBInterface.Stmt.execute("INSERT INTO `project000`.`id` (`id`) VALUES ('"+idText.getText()+"');");
+			}
+			dispose();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public void idSave() {
+		
+		try {
+			ResultSet rs = DBInterface.Stmt.executeQuery("select * from id");
+			
+			if(rs.next()) {
+				idText.setText(rs.getString(1));
+				check.setSelected(true);
+				idText.hasFocus()=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+}

@@ -1,0 +1,36 @@
+package Project_Frame;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class CalendarView extends JFrame {
+	JButton btn1 = new JButton("¢¸");
+	JLabel yl = new JLabel(new SimpleDateFormat("yyyy").format(new Date()));
+	JButton btn2 = new JButton("¢º");
+	JComboBox combo = new JComboBox();
+	
+	
+	public CalendarView() {
+		setTitle("´Þ·Â");
+		setSize(800, 600);
+		setLocationRelativeTo(null);
+		
+		JPanel p = new JPanel();
+		p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+		
+		ToolBar tb = new ToolBar();
+		
+		JPanel p1 = new JPanel();
+		
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+}

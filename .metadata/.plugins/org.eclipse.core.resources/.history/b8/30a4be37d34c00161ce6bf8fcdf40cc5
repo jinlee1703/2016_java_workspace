@@ -1,0 +1,75 @@
+package Project_Frame;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import Project_DBInterface.DBInterface;
+
+public class ledgerChart extends JFrame {
+	JLabel label1 = new JLabel();
+	JLabel label2 = new JLabel();
+	
+	public ledgerChart() {
+		setTitle("수입 & 지출 차트 보기");
+		setSize(500, 300);
+		setLocationRelativeTo(null);
+		
+		Chart ch = new Chart();
+		
+		add(ch);
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	class Chart extends JPanel {
+		@Override
+		protected void paintComponent(Graphics g) {
+			// TODO Auto-generated method stub
+			super.paintComponent(g);
+			
+			
+			try {
+				int sum = 0;
+				ResultSet rs = DBInterface.Stmt.executeQuery("select * from ledger where memberid='"+Login.id.getText()+"'");
+				while(rs.next()) {
+					sum = sum + rs.getInt(6);
+				}
+				
+				int psum = 0;
+				rs = DBInterface.Stmt.executeQuery("select * from ledger where memberid='"+Login.id.getText()+"' and division='수입'");
+				while(rs.next()) {
+					psum = psum + rs.getInt(6);
+				}
+				
+				int msum = 0;
+				rs = DBInterface.Stmt.executeQuery("select * from ledger where memberid='"+Login.id.getText()+"' and division='지출'");
+				while(rs.next()) {
+					msum = msum + rs.getInt(6);
+				}
+				
+				label1.setText("수입 : "+psum+"원("+")");
+				
+				
+				double psump = (double) psum / sum * 100;
+				double msump = (double) msum / sum * 100;
+				g.setColor(Color.blue);
+				g.fillArc(0, 0, getWidth(), getWidth(), 0, (int) (3.6*psump));
+				
+				g.setColor(Color.red);
+				g.fillArc(0, 0, getWidth(), getWidth(), (int) (3.6*psump), (int) (3.6*msump));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
+

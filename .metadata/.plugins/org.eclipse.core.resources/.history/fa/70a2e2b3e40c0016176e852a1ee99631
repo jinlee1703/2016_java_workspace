@@ -1,0 +1,5 @@
+package Setting_DBInterface;
+
+public class DBInterface {
+	public static Connection Con;
+}

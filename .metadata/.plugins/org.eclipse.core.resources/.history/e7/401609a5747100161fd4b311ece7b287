@@ -1,0 +1,43 @@
+package Project_Frame;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.Random;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Join extends JFrame {
+	JLabel[] l = new JLabel[6];
+	String[] ln = {"회원 아이디","회원 비밀번호","이름","주소","이메일","자동방지문자"};
+	JTextField[] t = new JTextField[6];
+	int[] ts = {10,10,5,20,20,5};
+	JLabel cl1 = new JLabel();
+	String rd = String.format("%02d", new Random().nextInt(10000));
+	JLabel cl2 = new JLabel("문자: "+rd);
+	
+	public Join() {
+		setTitle("회원가입");
+		setSize(400, 350);
+		setLocationRelativeTo(null);
+		
+		JPanel p = new JPanel(new BorderLayout());
+		
+		JPanel p1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		p1.add(new JLabel("회원가입 폼")).setFont(new Font("HY견고딕", Font.PLAIN, 25));
+		
+		JPanel p2 = new JPanel(new GridLayout(6, 1));
+		for(int i=0; i<6; i++) {
+			l[i] = new JLabel(ln[i]+" :").setPreferredSize(new Dimension(50, 20));;
+			t[i] = new JTextField();
+		}
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+}

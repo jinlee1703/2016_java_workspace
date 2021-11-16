@@ -1,0 +1,36 @@
+package Project_Frame;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+public class MemberSelect extends JFrame  {
+	JTextField t1 = new JTextField();
+	JTextField t2 = new JTextField();
+	JButton btn = new JButton("검색");
+	String[] header = {"아이디","비밀번호","이름","연락처","주소","포인트"};
+	DefaultTableModel model = new DefaultTableModel(header, 0);
+	JTable table = new JTable(model);
+	JScrollPane scroll = new JScrollPane(table);
+	
+	public MemberSelect() {
+		setTitle("고객조회");
+		setSize(800, 600);
+		setLocationRelativeTo(null);
+		
+		JPanel p = new JPanel(new BorderLayout());
+		
+		JPanel p1 = new JPanel();
+		p1.add(new JLabel("포인트")); p1.add(t1); p1.add(new JLabel("~")); p1.add(t2); p1.add(btn);
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+}

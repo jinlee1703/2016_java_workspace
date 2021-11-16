@@ -1,0 +1,29 @@
+package Project_Frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+public class purChaseDelete extends JFrame {
+	JTextField[] t = new JTextField[6];
+	JCheckBox cb = new JCheckBox("완료");
+	
+	public purChaseDelete(String pn) {
+		setTitle("거래내역 삭제");
+		setSize(400, 400);
+		setLocationRelativeTo(null);
+		
+		JPanel p = new JPanel(new BorderLayout());
+		p.setBorder(new EmptyBorder(10, 10, 10, 10));
+		
+		JPanel p1= new JPanel(new GridLayout(7, 1, 5, 5));
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+}

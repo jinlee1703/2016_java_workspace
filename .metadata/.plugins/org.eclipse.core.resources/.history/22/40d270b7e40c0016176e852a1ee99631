@@ -1,0 +1,8 @@
+package Setting_DBInterface;
+
+import java.sql.Connection;
+
+public class DBInterface {
+	public static Connection Con;
+	
+}

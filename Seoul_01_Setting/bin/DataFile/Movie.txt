@@ -1,0 +1,23 @@
+1	Battle of Yeonpyeong	a	Kim Hak Soon 	Drama	korea	2015-06-01	2015-10-09	130	15	8000
+2	A minority opinion	b	Gimseongje 	Drama	korea	2015-06-24	2015-11-01	127	15	8000
+3	Top secret investigation	c	Gwakkyeongtaek 	Drama, crime	korea	2015-06-18	2015-10-26	108	15	8000
+4	The rigid school girls who disappeared :	d	Iaeyeong 	Drama and mystery.	korea	2015-06-18	2015-10-26	99	15	8000
+5	A late-night restaurants	e	Joji Matsuoka 	Drama	korea	2015-06-18	2015-10-26	120	15	8000
+6	Best of Me	f	Michael Hoffman 	Drama, romance / Merlot	korea	2015-06-18	2015-10-26	116	15	8000
+7	Miss Julie	g	Liv Ullmann 	Drama	korea	2015-06-18	2015-10-26	130	15	8000
+8	Bigger, Longer , Uncut blue steel, entitled Ars Nova - - areupejio dc	h	Kesey, sage 	Sf, adventure and animation	korea	2015-06-18	2015-10-26	106	15	8000
+9	Tokyo, Tribe	i	Sion Sono 	Drama, action	korea	2015-06-18	2015-10-26	116	15	8000
+10	Angry artists	j	Jeon Kyu Hwan 	Action, thriller	korea	2015-06-18	2015-10-26	105	15	8000
+11	Roman Polanski 	l	War drama,	Sf, adventure and animation	korea	2015-06-18	2015-10-26	112	15	8000
+12	The Last Kiss	m	Vegetable earthly Gabriel. 	Melo and romance, drama, comedy	korea	2015-06-18	2015-10-26	118	15	8000
+13	Dragonworld	n	Colin, Trevor Roe played 61 tests 	Action, adventure, thriller and sf	korea	2015-06-11	2015-10-19	125	15	8000
+14	A fantasia of summer,	o	Jang Kun-jae 	Drama	korea	2015-06-11	2015-10-19	97	15	8000
+15	Elephant Song	p	Are you Charles empty wooden maul 	Drama	korea	2015-06-11	2015-10-19	100	15	8000
+16	Chance sekeon	q	Susanne Bier 	Drama	korea	2015-06-11	2015-10-19	102	15	8000
+17	Nureyev Gala	r	Valerie Shany, of Corfu 	Live performance	korea	2015-06-11	2015-10-19	107	15	8000
+18	Ghost	s	Allang geuseuponeo 	Fantasy, family	USA	2015-06-11	2015-10-19	92	15	8000
+19	Kiss Me Again	t	Vegetable earthly Gabriel. 	Drama, romance / Merlot	USA	2015-06-11	2015-10-19	139	15	8000
+20	Don Giovanni	u	Christoph esenbaeu 	Live performance	USA	2015-06-06	2015-10-14	77	15	8000
+21	The Barber of Seville	v	Michele Marie, dan otey 	Live performance	USA	2015-06-06	2015-10-14	130	15	9000
+22	My Fair Wedding	w	Janghuiseon 	Documentary	USA	2015-06-04	2015-10-12	94	15	9000
+23	Trip	x	Michael Winterbottom 	Comedy, drama	USA	2015-06-04	2015-10-12	108	15	9000

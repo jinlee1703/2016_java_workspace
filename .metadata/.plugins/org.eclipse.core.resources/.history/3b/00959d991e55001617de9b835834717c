@@ -1,0 +1,48 @@
+package Setting_TableSetting;
+
+import java.sql.ResultSet;
+
+import Setting_DBInterface.DBInterface;
+
+public class TableSetting {
+	public static void CreateDB() throws Exception {
+		ResultSet rs = DBInterface.Stmt.executeQuery("show databases like 'Cinema'");
+		if(rs.next()) {
+			DBInterface.Stmt.execute("drop database `Cinema`");
+		}
+		DBInterface.Stmt.execute("create database `Cinema`");
+		DBInterface.Stmt.execute("use `Cinema`");
+		
+		System.out.println("Create DB");
+	}
+	
+	public static void CreateGrants() throws Exception {
+		DBInterface.Stmt.execute("use Mysql");
+		ResultSet rs = DBInterface.Stmt.executeQuery("select * from user where user='user'");
+		if(rs.next()) {
+			DBInterface.Stmt.execute("drop user `user`");
+		}
+		DBInterface.Stmt.execute("create user `user` identified by '1234'");
+		DBInterface.Stmt.execute("grant select,insert,delete,update on `Cinema`.* to user");
+		
+		System.out.println("Create Grants");
+	}
+	
+	public static void CreateTables() throws Exception {
+		//customer
+		DBInterface.Stmt.execute("");
+		
+		//snack
+		DBInterface.Stmt.execute("");
+		
+		//seat
+		DBInterface.Stmt.execute("");
+		
+		//movie
+		DBInterface.Stmt.execute("");
+		
+		 System.out.println("Create Table");
+	}
+	
+	
+}

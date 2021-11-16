@@ -1,0 +1,27 @@
+package Project_Frame;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class MemberMain extends JFrame implements ActionListener {
+	JButton[] btn = new JButton[3];
+	String[] bn = {"상품목록","개인정보 수정","로그아웃"};
+	
+	public MemberMain() {
+		setSize(250, 200);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

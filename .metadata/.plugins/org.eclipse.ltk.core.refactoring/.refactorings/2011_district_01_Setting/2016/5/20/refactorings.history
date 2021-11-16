@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;2011_district_01_Setting/src/2011 지방&apos; to &apos;Data&apos;" description="Rename resource &apos;2011 지방&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/2011 지방" name="Data" stamp="1462796379020" updateReferences="true"/>
+</session>

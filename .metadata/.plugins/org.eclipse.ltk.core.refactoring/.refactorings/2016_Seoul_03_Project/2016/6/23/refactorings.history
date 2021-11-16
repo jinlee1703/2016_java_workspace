@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Frame.TickeySelect&apos; to &apos;TicketSelect&apos;&#x0D;&#x0A;- Original project: &apos;2016_Seoul_03_Project&apos;&#x0D;&#x0A;- Original element: &apos;Frame.TickeySelect&apos;&#x0D;&#x0A;- Renamed element: &apos;Frame.TicketSelect&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;TickeySelect&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Frame{TickeySelect.java[TickeySelect" matchStrategy="1" name="TicketSelect" qualified="false" references="true" similarDeclarations="false" stamp="1464782525233" textual="false" version="1.0"/>
+</session>

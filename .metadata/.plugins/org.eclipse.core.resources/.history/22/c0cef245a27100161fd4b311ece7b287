@@ -1,0 +1,45 @@
+package Setting_TableSetting;
+
+import java.sql.ResultSet;
+
+import Setting_DBInterface.DBInterface;
+
+public class TableSetting {
+	public static void CreateDB() throws Exception {
+		ResultSet rs = DBInterface.Stmt.executeQuery("show databases like 'project000'");
+		if(rs.next()) {
+			DBInterface.Stmt.execute("drop database `project000`");
+		}
+		DBInterface.Stmt.execute("create database `project000`");
+	}
+	
+	public static void CreateGrants() throws Exception {
+		DBInterface.Stmt.execute("use Mysql");
+		ResultSet rs = DBInterface.Stmt.executeQuery("select * from user where user='user'");
+		if(rs.next()) {
+			DBInterface.Stmt.execute("drop user `user`");
+		}
+		DBInterface.Stmt.execute("create user `user` idenfified by '1234'");
+		DBInterface.Stmt.execute("grant select,insert,delete,update on `project000`.* to user");
+	}
+	
+	public static void CreateTable() throws Exception {
+		DBInterface.Stmt.execute("CREATE TABLE `project000`.`member` (  `id` VARCHAR(11) NOT NULL,  `pw` VARCHAR(6) NULL,  `nname` VARCHAR(45) NULL,  `phone_num` VARCHAR(13) NULL,  `address` VARCHAR(45) NULL,  `point` INT(11) NULL,  PRIMARY KEY (`id`));");
+		DBInterface.Stmt.execute("CREATE TABLE `project000`.`product` (  `id` INT(11) NOT NULL AUTO_INCREMENT,  `nname` VARCHAR(45) NULL,  `type` VARCHAR(2) NULL,  `price` INT(11) NULL,  `size` VARCHAR(45) NULL,  `amount` INT(11) NULL,  PRIMARY KEY (`id`));");
+		DBInterface.Stmt.execute("CREATE TABLE `project000`.`purchase` (  `id` INT(11) NOT NULL AUTO_INCREMENT,  `recipient` VARCHAR(45) NULL,  `size` VARCHAR(45) NULL,  `amount` INT(11) NULL,  `cost` INT(11) NULL,  `address` VARCHAR(45) NULL,  `order_date` DATE NULL,  `delivery` TINYINT(1) NULL,  `product_id` INT(11) NULL,  `member_id` VARCHAR(11) NULL,  PRIMARY KEY (`id`));");
+		DBInterface.Stmt.execute("CREATE TABLE `project000`.`log` (  `id` VARCHAR(11) NULL);");
+	}
+	
+	public static void CreateData() throws Exception {
+		DBInterface.Stmt.execute("use Mysql");
+		DataInsert("member");
+		DataInsert("product");
+		DataInsert("purchase");
+	}
+	
+	public static void DataInsert(String name) throws Exception {
+		String path = System.getProperty("user.dir")+"\\지급자료\\datafiles\\"+name+".txt";
+		path = path.replace('\\', '/');
+		DBInterface.Stmt.execute("load data local infile '"+path+"' into table "+name+" ignore 1 lines");
+	}
+}

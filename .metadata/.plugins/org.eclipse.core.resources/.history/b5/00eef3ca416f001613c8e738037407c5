@@ -1,0 +1,15 @@
+package Project_Frame;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ToolBar {
+	JButton btn1 = new JButton(new ImageIcon(""));
+	JFrame frame;
+	
+	public ToolBar(JFrame frame) {
+		this.frame = frame;
+		
+	}
+}

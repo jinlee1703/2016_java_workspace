@@ -1,0 +1,55 @@
+package Project_Frame;
+
+import java.awt.Graphics;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import Project_DBInterface.DBInterface;
+
+public class Chart extends JFrame {
+	public Chart() {
+		setTitle("수입 & 지출 차트 보기");
+		setSize(600, 450);
+		setLocationRelativeTo(null);
+
+
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	class ChartPanel extends JPanel {
+		@Override
+		protected void paintComponent(Graphics g) {
+			// TODO Auto-generated method stub
+			super.paintComponent(g);
+			
+			int in, out, sum;
+			int ch1, ch2;
+			double cl1, cl2;
+			try {
+				ResultSet rs = DBInterface.Stmt.executeQuery("select sum(amount) from ledger where division='수입' and memberid='"+Login.id.getText()+"'");
+				rs.next(); in = rs.getInt(1);
+				
+				rs = DBInterface.Stmt.executeQuery("select sum(amount) from ledger where division='지출' and memberid='"+Login.id.getText()+"'");
+				rs.next(); out = rs.getInt(1);
+				
+				rs = DBInterface.Stmt.executeQuery("select sum(amount) from ledger where and memberid='"+Login.id.getText()+"'");
+				rs.next(); sum = rs.getInt(1);
+				
+				cl1 = in / sum * 100;
+				cl2 = out / sum * 100;
+				
+				ch1 = (int) Math.round(cl1);
+				ch2 = (int) Math.round(cl2);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			g.fillArc(x, y, width, height, startAngle, arcAngle);
+		}
+	}
+}

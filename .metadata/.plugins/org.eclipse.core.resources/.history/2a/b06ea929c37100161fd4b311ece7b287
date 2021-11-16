@@ -1,0 +1,207 @@
+package Project_Frame;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import Project_DBInterface.DBInterface;
+
+public class ProductInsert extends JFrame {
+	JLabel img = new JLabel();
+	JTextField t1 = new JTextField();
+	JTextField t2 = new JTextField();
+	JTextField t3 = new JTextField(3);
+	JRadioButton rb1 = new JRadioButton("상의");
+	JRadioButton rb2 = new JRadioButton("하의");
+	JCheckBox[] cb = new JCheckBox[7];
+	String[] cn = {"S","M","L","XL","44","46","48"};
+	JButton btn1 = new JButton("이미지 불러오기");
+	JButton btn2 = new JButton("상품추가");
+	JPanel cbp = new JPanel();
+	String path1 = null;
+	
+	public ProductInsert() {
+		setTitle("상품추가");
+		setSize(800, 500);
+		setLocationRelativeTo(null);
+		
+		JPanel p = new JPanel(new GridLayout(1, 2));
+		
+		JPanel p1 = new JPanel(new BorderLayout());
+		p1.setBorder(new EmptyBorder(10, 10, 10, 10));
+		p1.add(img, BorderLayout.CENTER);
+		p1.add(new JLabel("<상품 이미지>"), BorderLayout.SOUTH);
+		
+		JPanel p2 = new JPanel(new BorderLayout());
+		p2.setBorder(new EmptyBorder(10, 10, 10, 10));
+		JPanel p3 = new JPanel(new GridLayout(5, 1));
+		p3.setBorder(new EmptyBorder(0, 0, 0, 5));
+		p3.add(new JLabel("상품명"));
+		p3.add(new JLabel("타입"));
+		p3.add(new JLabel("가격"));
+		p3.add(new JLabel("사이즈"));
+		p3.add(new JLabel("수량"));
+		
+		JPanel p4 = new JPanel(new GridLayout(5, 1));
+		JPanel rbp = new JPanel();
+		rbp.add(rb1); rbp.add(rb2);
+		JPanel pp = new JPanel();
+		p4.add(t1);
+		p4.add(rbp);
+		p4.add(t2);
+		p4.add(cbp);
+		p4.add(pp);
+		
+		JPanel p5 = new JPanel(new GridLayout(1, 2, 5, 5));
+		p5.add(btn1); p5.add(btn2);
+		
+		p2.add(p3, BorderLayout.WEST);
+		p2.add(p4, BorderLayout.CENTER);
+		p2.add(p5, BorderLayout.SOUTH);
+		
+		p.add(p1);
+		p.add(p2);
+		
+		add(p);
+		
+		ButtonGroup g = new ButtonGroup();
+		g.add(rb1); g.add(rb2);
+		rb1.setActionCommand(rb1.getText());
+		rb2.setActionCommand(rb2.getText());
+		
+		for(int i=0; i<7; i++) {
+			cb[i] = new JCheckBox(cn[i]);
+		}
+		
+		rb1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				typeSetting();
+			}
+		});
+		
+		rb2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				typeSetting();
+			}
+		});
+		
+		btn1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFileChooser fc = new JFileChooser("C:\\Users\\Public\\Pictures\\Sample Pictures");
+				FileNameExtensionFilter f1 = new FileNameExtensionFilter("Image Files (*.jpg)", "jpg");
+				FileNameExtensionFilter f2 = new FileNameExtensionFilter("Image Files (*.png)", "png");
+				fc.setFileFilter(f1); fc.setFileFilter(f2);
+				
+				int res = fc.showOpenDialog(null);
+				
+				if(res!=JFileChooser.APPROVE_OPTION) {
+					return;
+				}
+				
+				path1 = fc.getSelectedFile().getPath();
+				
+				img.setIcon(new ImageIcon(path1));
+			}
+		});
+		
+		btn2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(t1.getText().equals("") || t2.getText().equals("") || t3.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "모든 값을 입력해주세요.");
+					return;
+				}
+				
+				if(rb1.isSelected()) {
+					if(cb[0].isSelected()==false && cb[1].isSelected()==false && cb[2].isSelected()==false && cb[3].isSelected()==false) {
+						JOptionPane.showMessageDialog(null, "모든 값을 입력해주세요.");
+						return;
+					}
+				} else {
+					if(cb[4].isSelected()==false && cb[5].isSelected()==false && cb[6].isSelected()==false) {
+						JOptionPane.showMessageDialog(null, "모든 값을 입력해주세요.");
+						return;
+					}
+				}
+				
+				String sz=null;
+				
+				if(rb1.isSelected()) {
+					if(cb[0].isSelected()) {
+						sz = cb[0].getText();
+					}
+					if(cb[1].isSelected()) {
+						if(sz=null) {
+							sz = cb[1].getText();
+						} else {
+							
+						}
+					}
+					if(cb[2].isSelected()) {
+						
+					}
+					if(cb[3].isSelected()) {
+						
+					}
+					
+				} else {
+					if(cb[4].isSelected()==false && cb[5].isSelected()==false && cb[6].isSelected()==false) {
+						JOptionPane.showMessageDialog(null, "모든 값을 입력해주세요.");
+						return;
+					}
+				}
+				
+				try {
+					DBInterface.Stmt.execute("INSERT INTO `project000`.`product` (`name`, `type`, `price`, `size`, `amount`) "
+							+ "VALUES ('"+t1.getText()+"', '"+g.getSelection().getActionCommand()+"', '"+t2.getText()+"', '""', '4');");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public void typeSetting() {
+		cbp.removeAll();
+		cbp.updateUI();
+		if(rb1.isSelected()) {
+			cbp.add(cb[0]);
+			cbp.add(cb[1]);
+			cbp.add(cb[2]);
+			cbp.add(cb[3]);
+		} else {
+			cbp.add(cb[4]);
+			cbp.add(cb[5]);
+			cbp.add(cb[6]);
+		}
+	}
+}

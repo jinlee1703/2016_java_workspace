@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="solutionSelectionDialog">
+		<item value="0" key="applyScope"/>
+	</section>
+	<section name="solution">
+	</section>
+	<section name="com.tomato.exerd.core.wizard.NewEXerdWizard">
+	</section>
+	<section name="com.tomato.exerd.handler.DiagramSelectDialog">
+		<item value="400" key="DIALOG_WIDTH"/>
+		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
+		<item value="300" key="DIALOG_HEIGHT"/>
+		<item value="288" key="DIALOG_X_ORIGIN"/>
+		<item value="319" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="com.tomato.exerd.handler.Helper.FindTableDialog2">
+		<item value="263" key="DIALOG_WIDTH"/>
+		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
+		<item value="314" key="DIALOG_HEIGHT"/>
+		<item value="357" key="DIALOG_X_ORIGIN"/>
+		<item value="310" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

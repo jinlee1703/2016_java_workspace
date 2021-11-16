@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;2016_Sejong_01_Setting/src/제2과제 지급파일&apos; to &apos;Data&apos;" description="Rename resource &apos;제2과제 지급파일&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/제2과제 지급파일" name="Data" stamp="1466748541596" updateReferences="true"/>
+</session>
